@@ -32,7 +32,9 @@ const routes = new Router();
 
 routes.get('/', (req, res) => res.json({ online: true }));
 routes.get('/bloco', BlocoController.show);
+routes.get('/blocoCount', BlocoController.count);
 routes.post('/bloco', BlocoController.create);
+routes.delete('/bloco/:id', BlocoController.delete);
 
 routes.post('/classroom', ClassroomController.create);
 routes.get('/classroom', ClassroomController.show);
@@ -42,6 +44,7 @@ routes.get('/disciplinas', DisciplinaController.show);
 
 routes.post('/teachers', TeacherController.create);
 routes.get('/teachers', TeacherController.show);
+routes.put('/teachers/:id', TeacherController.update);
 
 // routes.post('/user', UserController.store);
 // routes.post('/sessions', SessionController.store);
