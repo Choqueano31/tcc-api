@@ -36,7 +36,9 @@ class disciplinas extends Model {
     this.hasMany(models.teachers, {
       foreignKey: 'disciplina_id',
     });
-
+    this.belongsTo(models.teachers, {
+      foreignKey: { name: 'id' },
+    });
     // this.belongsTo(Associado, {
     //   foreignKey: 'id',
     // });

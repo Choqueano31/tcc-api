@@ -35,6 +35,7 @@ routes.get('/bloco', BlocoController.show);
 routes.get('/blocoCount', BlocoController.count);
 routes.post('/bloco', BlocoController.create);
 routes.delete('/bloco/:id', BlocoController.delete);
+routes.put('/bloco/:id', BlocoController.update);
 
 routes.post('/classroom', ClassroomController.create);
 routes.get('/classroom', ClassroomController.show);
