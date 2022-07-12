@@ -26,6 +26,15 @@ class classrooms extends Model {
     return this;
   }
 
+  static associate(models) {
+    this.belongsTo(models.teams, {
+      foreignKey: 'teams_id',
+    });
+
+    // this.belongsTo(Associado, {
+    //   foreignKey: 'id',
+    // });
+  }
   // static associate(models) {
   //   /**
   //    * pertence a ...

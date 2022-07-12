@@ -30,6 +30,9 @@ class teams extends Model {
     this.hasMany(models.teachers, {
       foreignKey: 'teams_id',
     });
+    this.belongsTo(models.classrooms, {
+      foreignKey: 'id',
+    });
     // this.belongsTo(Associado, {
     //   foreignKey: 'id',
     // });

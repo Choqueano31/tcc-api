@@ -32,7 +32,7 @@ class teachers extends Model {
 
   static associate(models) {
     this.belongsTo(models.disciplinas, {
-      foreignKey: 'teams_id',
+      foreignKey: 'disciplina_id',
     });
   }
 }
