@@ -16,7 +16,7 @@ const models = [Classrooms, Disciplinas, teachers, Teams];
 class Database {
   constructor() {
     this.init();
-    // this.mongo();
+    this.mongo();
   }
 
   init() {
@@ -30,10 +30,11 @@ class Database {
 
   mongo() {
     this.mongoConnection = mongoose.connect(
-      'mongodb://localhost:27017/gobarber',
+      'mongodb+srv://almeida:24111994@cluster0.ps000.mongodb.net/TCC?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
         useFindAndModify: true,
+        useUnifiedTopology: true,
       }
     );
   }
