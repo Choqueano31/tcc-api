@@ -1,13 +1,15 @@
 import teachers from '../models/Teachers';
+import Professor from '../schemas/Professor';
 
 class TeacherController {
   async show(req, res) {
-    const response = await teachers.findAll({});
+    const response = await Professor.find();
     return res.json(response);
   }
 
   async create(req, res) {
-    const response = await teachers.create(req.body);
+    const response = new Professor(req.body);
+    await response.save();
 
     if (response) {
       res.json('criado com sucesso');

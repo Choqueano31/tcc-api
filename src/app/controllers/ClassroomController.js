@@ -1,14 +1,16 @@
 import classrooms from '../models/Classrooms';
 import teams from '../models/Teams';
+import Salas from '../schemas/Salas';
 
 class ClassroomController {
   async show(req, res) {
-    const response = await classrooms.findAll({ include: [{ model: teams }] });
+    const response = await Salas.find();
     return res.json(response);
   }
 
   async create(req, res) {
-    const response = await classrooms.create(req.body);
+    const response = new Salas(req.body);
+    await response.save();
 
     if (response) {
       res.json('criado com sucesso');

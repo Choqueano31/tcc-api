@@ -37,17 +37,17 @@ routes.post('/bloco', BlocoController.create);
 routes.delete('/bloco/:id', BlocoController.delete);
 routes.put('/bloco/:id', BlocoController.update);
 
-routes.post('/classroom', ClassroomController.create);
-routes.get('/classroom', ClassroomController.show);
-routes.put('/classroom/:id', ClassroomController.update);
-routes.delete('/classroom/:id', ClassroomController.delete);
+routes.post('/salas', ClassroomController.create);
+routes.get('/salas', ClassroomController.show);
+routes.put('/salas/:id', ClassroomController.update);
+routes.delete('/salas/:id', ClassroomController.delete);
 
 routes.post('/disciplinas', DisciplinaController.create);
 routes.get('/disciplinas', DisciplinaController.show);
 
-routes.post('/teachers', TeacherController.create);
-routes.get('/teachers', TeacherController.show);
-routes.put('/teachers/:id', TeacherController.update);
+routes.post('/professor', TeacherController.create);
+routes.get('/professor', TeacherController.show);
+routes.put('/professor/:id', TeacherController.update);
 
 // routes.post('/user', UserController.store);
 // routes.post('/sessions', SessionController.store);

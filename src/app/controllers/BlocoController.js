@@ -1,8 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import classrooms from '../models/Classrooms';
 import disciplinas from '../models/Disciplinas';
 import teachers from '../models/Teachers';
 import teams from '../models/Teams';
 import Bloco from '../schemas/Bloco';
+import Disciplinas from '../schemas/Disciplinas';
+import Professor from '../schemas/Professor';
 
 class BlocoController {
   async show(req, res) {
@@ -14,6 +17,14 @@ class BlocoController {
     //   ],
     // });
     const response = await Bloco.find();
+    for (let i = 0; i < response.length; i++) {
+      const findSala = await Disciplinas.find({ bloco_id: response[i]._id });
+      console.log(findSala);
+      // if (findSala.length > 0) {
+
+      // }
+    }
+
     return res.json(response);
   }
 
@@ -51,10 +62,10 @@ class BlocoController {
     };
     const response = await Bloco.count();
     result.blocoCount = response;
-    // const response2 = await teachers.count();
-    // result.professoresCount = response2;
-    // const response3 = await disciplinas.count();
-    // result.disciplinasCount = response3;
+    const response2 = await Professor.count();
+    result.professoresCount = response2;
+    const response3 = await Disciplinas.count();
+    result.disciplinasCount = response3;
 
     return res.json(result);
   }
