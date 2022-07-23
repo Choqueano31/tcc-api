@@ -1,5 +1,3 @@
-import classrooms from '../models/Classrooms';
-import teams from '../models/Teams';
 import Salas from '../schemas/Salas';
 
 class ClassroomController {

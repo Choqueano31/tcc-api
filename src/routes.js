@@ -4,6 +4,7 @@ import BlocoController from './app/controllers/BlocoController';
 import ClassroomController from './app/controllers/ClassroomController';
 import DisciplinaController from './app/controllers/DisciplinaController';
 import TeacherController from './app/controllers/TeacherController';
+import TimeTableController from './app/controllers/TimeTableController';
 // import configMulter from './config/multer';
 
 // controller
@@ -52,6 +53,9 @@ routes.get('/professor', TeacherController.show);
 routes.put('/professor/:id', TeacherController.update);
 routes.delete('/professor/:id', TeacherController.delete);
 
+routes.post('/timetable', TimeTableController.create);
+routes.get('/timetable', TimeTableController.show);
+routes.put('/timetable/:id/:id2', TimeTableController.update);
 // routes.post('/user', UserController.store);
 // routes.post('/sessions', SessionController.store);
 
