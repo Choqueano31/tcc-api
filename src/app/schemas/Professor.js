@@ -13,11 +13,11 @@ const ProfessoresSchema = new mongoose.Schema(
       allowNull: false,
     },
     bloco_id: {
-      type: Number,
+      type: String,
       allowNull: false,
     },
     disciplina_id: {
-      type: Number,
+      type: String,
       allowNull: false,
     },
   },

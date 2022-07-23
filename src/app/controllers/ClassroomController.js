@@ -19,28 +19,28 @@ class ClassroomController {
   }
 
   async update(req, res) {
-    const nameAlreadyExists = await classrooms.findOne({
-      where: { nome: req.body.nome },
+    const nameAlreadyExists = await Salas.findOne({
+      nome: req.body.nome,
     });
     if (nameAlreadyExists)
       return res.status(400).json({ message: 'nome já está sendo utilizado' });
 
-    const classToUpdate = await classrooms.findOne({
-      where: { id: req.params.id },
+    const classToUpdate = await Salas.findOne({
+      _id: req.params.id,
     });
     if (classToUpdate) {
-      await classToUpdate.update(req.body);
+      await classToUpdate.update({ $set: req.body });
       return res.status(200).json({ message: 'Atualização feita com sucesso' });
     }
     return res.status(400).json({ message: 'erro ao tentar atualizar' });
   }
 
   async delete(req, res) {
-    const classExist = await classrooms.findOne({
-      where: { id: req.params.id },
+    const classExist = await Salas.findOne({
+      _id: req.params.id,
     });
     if (classExist) {
-      await classExist.destroy();
+      await classExist.remove();
       return res.json({ message: 'Class exlcuida com sucesso' });
     }
     return res

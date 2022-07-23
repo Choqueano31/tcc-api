@@ -13,7 +13,7 @@ const SalasSchema = new mongoose.Schema(
       allowNull: false,
     },
     bloco_id: {
-      type: Number,
+      type: String,
       allowNull: false,
     },
   },

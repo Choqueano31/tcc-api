@@ -24,6 +24,10 @@ const DisciplinasSchema = new mongoose.Schema(
       type: String,
       allowNull: false,
     },
+    professores: {
+      type: Array,
+      allowNull: true,
+    },
   },
   {
     timestamps: true,

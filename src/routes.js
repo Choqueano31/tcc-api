@@ -31,11 +31,11 @@ const routes = new Router();
 // const upload = multer(configMulter);
 
 routes.get('/', (req, res) => res.json({ online: true }));
+routes.post('/bloco', BlocoController.create);
 routes.get('/bloco', BlocoController.show);
 routes.get('/blocoCount', BlocoController.count);
-routes.post('/bloco', BlocoController.create);
-routes.delete('/bloco/:id', BlocoController.delete);
 routes.put('/bloco/:id', BlocoController.update);
+routes.delete('/bloco/:id', BlocoController.delete);
 
 routes.post('/salas', ClassroomController.create);
 routes.get('/salas', ClassroomController.show);
@@ -44,10 +44,13 @@ routes.delete('/salas/:id', ClassroomController.delete);
 
 routes.post('/disciplinas', DisciplinaController.create);
 routes.get('/disciplinas', DisciplinaController.show);
+routes.put('/disciplinas/:id', DisciplinaController.update);
+routes.delete('/disciplinas/:id', DisciplinaController.delete);
 
 routes.post('/professor', TeacherController.create);
 routes.get('/professor', TeacherController.show);
 routes.put('/professor/:id', TeacherController.update);
+routes.delete('/professor/:id', TeacherController.delete);
 
 // routes.post('/user', UserController.store);
 // routes.post('/sessions', SessionController.store);

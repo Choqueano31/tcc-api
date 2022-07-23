@@ -1,8 +1,6 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-await-in-loop */
 /* eslint-disable no-underscore-dangle */
-import classrooms from '../models/Classrooms';
-import disciplinas from '../models/Disciplinas';
-import teachers from '../models/Teachers';
-import teams from '../models/Teams';
 import Bloco from '../schemas/Bloco';
 import Disciplinas from '../schemas/Disciplinas';
 import Professor from '../schemas/Professor';
@@ -17,9 +15,23 @@ class BlocoController {
     //   ],
     // });
     const response = await Bloco.find();
+
     for (let i = 0; i < response.length; i++) {
-      const findSala = await Disciplinas.find({ bloco_id: response[i]._id });
-      console.log(findSala);
+      const findDisc = await Disciplinas.find({ bloco_id: response[i]._id });
+      if (findDisc.length > 0) {
+        for (let j = 0; j < findDisc.length; j++) {
+          // console.log(findDisc[j]._id);
+          const findProf = await Professor.find({
+            disciplina_id: findDisc[j]._id,
+          });
+          if (findProf.length > 0) {
+            for (let k = 0; k < findProf.length; k++) {
+              findDisc[j].professores.push(findProf[k]);
+            }
+          }
+          response[i].disciplinas.push(findDisc[j]);
+        }
+      }
       // if (findSala.length > 0) {
 
       // }
