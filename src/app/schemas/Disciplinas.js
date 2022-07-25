@@ -24,6 +24,12 @@ const DisciplinasSchema = new mongoose.Schema(
       type: String,
       allowNull: false,
     },
+    bloco: {
+      type: Object,
+    },
+    sala: {
+      type: Object,
+    },
     professores: {
       type: Array,
       allowNull: true,

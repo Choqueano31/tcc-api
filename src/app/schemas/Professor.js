@@ -20,6 +20,12 @@ const ProfessoresSchema = new mongoose.Schema(
       type: String,
       allowNull: false,
     },
+    bloco: {
+      type: Object,
+    },
+    disciplina: {
+      type: Object,
+    },
   },
   {
     timestamps: true,

@@ -40,11 +40,13 @@ routes.delete('/bloco/:id', BlocoController.delete);
 
 routes.post('/salas', ClassroomController.create);
 routes.get('/salas', ClassroomController.show);
+routes.get('/salas/:id', ClassroomController.index);
 routes.put('/salas/:id', ClassroomController.update);
 routes.delete('/salas/:id', ClassroomController.delete);
 
 routes.post('/disciplinas', DisciplinaController.create);
 routes.get('/disciplinas', DisciplinaController.show);
+routes.get('/disciplinas/:id', DisciplinaController.index);
 routes.put('/disciplinas/:id', DisciplinaController.update);
 routes.delete('/disciplinas/:id', DisciplinaController.delete);
 

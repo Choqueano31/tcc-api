@@ -1,8 +1,24 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-await-in-loop */
+import Bloco from '../schemas/Bloco';
+import Disciplinas from '../schemas/Disciplinas';
 import Professor from '../schemas/Professor';
 
 class TeacherController {
   async show(req, res) {
     const response = await Professor.find();
+    for (let i = 0; i < response.length; i++) {
+      const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
+      const finddisc = await Disciplinas.findOne({
+        _id: response[i].disciplina_id,
+      });
+      if (findBloc) {
+        response[i].bloco = findBloc;
+      }
+      if (finddisc) {
+        response[i].disciplina = finddisc;
+      }
+    }
     return res.json(response);
   }
 

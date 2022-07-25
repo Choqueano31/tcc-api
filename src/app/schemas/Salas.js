@@ -16,6 +16,9 @@ const SalasSchema = new mongoose.Schema(
       type: String,
       allowNull: false,
     },
+    bloco: {
+      type: Object,
+    },
   },
   {
     timestamps: true,

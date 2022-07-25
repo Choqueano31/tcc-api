@@ -1,9 +1,31 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-await-in-loop */
+import Bloco from '../schemas/Bloco';
 import Disciplinas from '../schemas/Disciplinas';
+import Salas from '../schemas/Salas';
 
 class DisciplinaController {
   async show(req, res) {
     const response = await Disciplinas.find();
+    for (let i = 0; i < response.length; i++) {
+      const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
+      const findSala = await Salas.findOne({ _id: response[i].sala_id });
+      if (findBloc) {
+        response[i].bloco = findBloc;
+      }
+      if (findSala) {
+        response[i].sala = findSala;
+      }
+    }
     return res.json(response);
+  }
+
+  async index(req, res) {
+    const response = await Disciplinas.find({ bloco_id: req.params.id });
+    if (response.length > 0) {
+      return res.json(response);
+    }
+    return res.status(400).json();
   }
 
   async create(req, res) {

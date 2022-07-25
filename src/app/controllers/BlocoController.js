@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-underscore-dangle */
@@ -84,7 +85,7 @@ class BlocoController {
 
   async update(req, res) {
     const nameAlreadyExists = await Bloco.findOne({ nome: req.body.nome });
-    if (nameAlreadyExists)
+    if (nameAlreadyExists && nameAlreadyExists._id != req.params.id)
       return res.status(400).json({ message: 'nome já está sendo utilizado' });
 
     const blocToUpdate = await Bloco.findOne({ _id: req.params.id });

@@ -1,9 +1,28 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-await-in-loop */
+import Bloco from '../schemas/Bloco';
 import Salas from '../schemas/Salas';
 
 class ClassroomController {
   async show(req, res) {
     const response = await Salas.find();
+    for (let i = 0; i < response.length; i++) {
+      const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
+      if (findBloc) {
+        response[i].bloco = findBloc;
+      }
+    }
     return res.json(response);
+  }
+
+  async index(req, res) {
+    const response = await Salas.find({ bloco_id: req.params.id });
+    if (response.length > 0) {
+      return res.json(response);
+    }
+    return res.status(400).json();
   }
 
   async create(req, res) {
@@ -20,7 +39,7 @@ class ClassroomController {
     const nameAlreadyExists = await Salas.findOne({
       nome: req.body.nome,
     });
-    if (nameAlreadyExists)
+    if (nameAlreadyExists && nameAlreadyExists._id != req.params.id)
       return res.status(400).json({ message: 'nome já está sendo utilizado' });
 
     const classToUpdate = await Salas.findOne({
