@@ -3,6 +3,7 @@
 import Bloco from '../schemas/Bloco';
 import Disciplinas from '../schemas/Disciplinas';
 import Professor from '../schemas/Professor';
+import Salas from '../schemas/Salas';
 
 class TeacherController {
   async show(req, res) {
@@ -12,6 +13,12 @@ class TeacherController {
       const finddisc = await Disciplinas.findOne({
         _id: response[i].disciplina_id,
       });
+      const findSala = await Salas.findOne({
+        _id: finddisc.sala_id,
+      });
+      if (findSala) {
+        finddisc.sala = findSala;
+      }
       if (findBloc) {
         response[i].bloco = findBloc;
       }
