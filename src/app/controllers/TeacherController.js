@@ -29,6 +29,29 @@ class TeacherController {
     return res.json(response);
   }
 
+  async index(req, res) {
+    const response = await Professor.find({ bloco_id: req.params.id });
+    for (let i = 0; i < response.length; i++) {
+      const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
+      const finddisc = await Disciplinas.findOne({
+        _id: response[i].disciplina_id,
+      });
+      const findSala = await Salas.findOne({
+        _id: finddisc.sala_id,
+      });
+      if (findSala) {
+        finddisc.sala = findSala;
+      }
+      if (findBloc) {
+        response[i].bloco = findBloc;
+      }
+      if (finddisc) {
+        response[i].disciplina = finddisc;
+      }
+    }
+    return res.json(response);
+  }
+
   async create(req, res) {
     const response = new Professor(req.body);
     await response.save();

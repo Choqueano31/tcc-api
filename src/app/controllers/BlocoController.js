@@ -41,6 +41,15 @@ class BlocoController {
     return res.json(response);
   }
 
+  async index(req, res) {
+    try {
+      const response = await Bloco.findOne({ _id: req.params.id });
+      return res.json(response);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
+
   async create(req, res) {
     // const blocoExist = await teams.findOne({ where: { nome: req.body.nome } });
     const blocoExist = await Bloco.findOne({ nome: req.body.nome });

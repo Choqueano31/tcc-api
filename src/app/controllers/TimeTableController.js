@@ -2,17 +2,26 @@ import TimeTable from '../schemas/timeTable';
 
 class TimeTableController {
   async create(req, res) {
-    const response = new TimeTable(req.body);
-    await response.save();
+    try {
+      const response = new TimeTable(req.body);
+      await response.save();
 
-    if (response) {
-      res.json('criado com sucesso');
+      if (response) {
+        res.json('criado com sucesso');
+      }
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
     }
-    return res.status(400).json('nao foi possivel criar');
   }
 
   async show(req, res) {
     const response = await TimeTable.find();
+    return res.json(response);
+  }
+
+  async index(req, res) {
+    const response = await TimeTable.find({ bloco_id: req.params.id });
     return res.json(response);
   }
 

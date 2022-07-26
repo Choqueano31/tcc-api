@@ -34,6 +34,7 @@ const routes = new Router();
 routes.get('/', (req, res) => res.json({ online: true }));
 routes.post('/bloco', BlocoController.create);
 routes.get('/bloco', BlocoController.show);
+routes.get('/bloco/:id', BlocoController.index);
 routes.get('/blocoCount', BlocoController.count);
 routes.put('/bloco/:id', BlocoController.update);
 routes.delete('/bloco/:id', BlocoController.delete);
@@ -52,11 +53,13 @@ routes.delete('/disciplinas/:id', DisciplinaController.delete);
 
 routes.post('/professor', TeacherController.create);
 routes.get('/professor', TeacherController.show);
+routes.get('/professor/:id', TeacherController.index);
 routes.put('/professor/:id', TeacherController.update);
 routes.delete('/professor/:id', TeacherController.delete);
 
 routes.post('/timetable', TimeTableController.create);
 routes.get('/timetable', TimeTableController.show);
+routes.get('/timetable/:id', TimeTableController.index);
 routes.put('/timetable/:id/:id2', TimeTableController.update);
 // routes.post('/user', UserController.store);
 // routes.post('/sessions', SessionController.store);
