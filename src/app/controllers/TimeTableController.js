@@ -35,7 +35,8 @@ class TimeTableController {
         $set: {
           'cards.$': req.body,
         },
-      }
+      },
+      { useFindAndModify: false }
     );
     if (response) {
       return res.status(200).json({ message: 'Atualização feita com sucesso' });
