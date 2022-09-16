@@ -2,18 +2,18 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-await-in-loop */
-import Bloco from '../schemas/Bloco';
+// import Bloco from '../schemas/Bloco';
 import Salas from '../schemas/Salas';
 
 class ClassroomController {
   async show(req, res) {
     const response = await Salas.find();
-    for (let i = 0; i < response.length; i++) {
-      const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
-      if (findBloc) {
-        response[i].bloco = findBloc;
-      }
-    }
+    // for (let i = 0; i < response.length; i++) {
+    //   const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
+    //   if (findBloc) {
+    //     response[i].bloco = findBloc;
+    //   }
+    // }
     return res.json(response);
   }
 

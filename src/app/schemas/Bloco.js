@@ -13,7 +13,7 @@ const BlocoSchema = new mongoose.Schema(
       allowNull: false,
     },
     turno: {
-      type: Number,
+      type: String,
       allowNull: false,
     },
     disciplinas: {

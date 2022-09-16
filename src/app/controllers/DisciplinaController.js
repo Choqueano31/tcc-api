@@ -2,6 +2,7 @@
 /* eslint-disable no-await-in-loop */
 import Bloco from '../schemas/Bloco';
 import Disciplinas from '../schemas/Disciplinas';
+import Professor from '../schemas/Professor';
 import Salas from '../schemas/Salas';
 
 class DisciplinaController {
@@ -10,11 +11,17 @@ class DisciplinaController {
     for (let i = 0; i < response.length; i++) {
       const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
       const findSala = await Salas.findOne({ _id: response[i].sala_id });
+      const findProf = await Professor.findOne({
+        _id: response[i].professor_id,
+      });
       if (findBloc) {
         response[i].bloco = findBloc;
       }
       if (findSala) {
         response[i].sala = findSala;
+      }
+      if (findProf) {
+        response[i].professor = findProf;
       }
     }
     return res.json(response);
@@ -23,6 +30,22 @@ class DisciplinaController {
   async index(req, res) {
     const response = await Disciplinas.find({ bloco_id: req.params.id });
     if (response.length > 0) {
+      for (let i = 0; i < response.length; i++) {
+        const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
+        const findSala = await Salas.findOne({ _id: response[i].sala_id });
+        const findProf = await Professor.findOne({
+          _id: response[i].professor_id,
+        });
+        if (findBloc) {
+          response[i].bloco = findBloc;
+        }
+        if (findSala) {
+          response[i].sala = findSala;
+        }
+        if (findProf) {
+          response[i].professor = findProf;
+        }
+      }
       return res.json(response);
     }
     return res.status(400).json();

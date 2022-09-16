@@ -10,7 +10,7 @@ class TimeTableController {
         res.json('criado com sucesso');
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       res.sendStatus(500);
     }
   }

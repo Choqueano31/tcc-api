@@ -12,12 +12,9 @@ const SalasSchema = new mongoose.Schema(
       type: String,
       allowNull: false,
     },
-    bloco_id: {
-      type: String,
-      allowNull: false,
-    },
-    bloco: {
-      type: Object,
+    restrict: {
+      type: Array,
+      allowNull: true,
     },
   },
   {

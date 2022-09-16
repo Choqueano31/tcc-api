@@ -17,26 +17,23 @@ class BlocoController {
     // });
     const response = await Bloco.find();
 
-    for (let i = 0; i < response.length; i++) {
-      const findDisc = await Disciplinas.find({ bloco_id: response[i]._id });
-      if (findDisc.length > 0) {
-        for (let j = 0; j < findDisc.length; j++) {
-          // console.log(findDisc[j]._id);
-          const findProf = await Professor.find({
-            disciplina_id: findDisc[j]._id,
-          });
-          if (findProf.length > 0) {
-            for (let k = 0; k < findProf.length; k++) {
-              findDisc[j].professores.push(findProf[k]);
-            }
-          }
-          response[i].disciplinas.push(findDisc[j]);
-        }
-      }
-      // if (findSala.length > 0) {
-
-      // }
-    }
+    // for (let i = 0; i < response.length; i++) {
+    //   const findDisc = await Disciplinas.find({ bloco_id: response[i]._id });
+    //   if (findDisc.length > 0) {
+    //     for (let j = 0; j < findDisc.length; j++) {
+    //       // console.log(findDisc[j]._id);
+    //       const findProf = await Professor.find({
+    //         _id: findDisc[j].disciplina_id,
+    //       });
+    //       if (findProf.length > 0) {
+    //         for (let k = 0; k < findProf.length; k++) {
+    //           findDisc[j].professores.push(findProf[k]);
+    //         }
+    //       }
+    //       response[i].disciplinas.push(findDisc[j]);
+    //     }
+    //   }
+    // }
 
     return res.json(response);
   }

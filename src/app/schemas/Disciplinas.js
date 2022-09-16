@@ -20,6 +20,10 @@ const DisciplinasSchema = new mongoose.Schema(
       type: String,
       allowNull: false,
     },
+    professor_id: {
+      type: String,
+      allowNull: false,
+    },
     sala_id: {
       type: String,
       allowNull: false,
@@ -30,9 +34,8 @@ const DisciplinasSchema = new mongoose.Schema(
     sala: {
       type: Object,
     },
-    professores: {
-      type: Array,
-      allowNull: true,
+    professor: {
+      type: Object,
     },
   },
   {
