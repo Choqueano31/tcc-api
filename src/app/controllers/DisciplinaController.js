@@ -24,7 +24,10 @@ class DisciplinaController {
         response[i].professor = findProf;
       }
     }
-    return res.json(response);
+    if (response.data.length > 0) {
+      return res.json(response);
+    }
+    throw new Error('nao há disciplinas cadastradas');
   }
 
   async index(req, res) {
@@ -48,7 +51,9 @@ class DisciplinaController {
       }
       return res.json(response);
     }
-    return res.status(400).json();
+    return res
+      .status(204)
+      .json({ message: 'Não há disciplinas para esse bloco' });
   }
 
   async create(req, res) {

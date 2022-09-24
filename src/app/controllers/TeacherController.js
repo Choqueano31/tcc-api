@@ -80,7 +80,19 @@ class TeacherController {
     });
     console.log(req.body);
     if (teacherExists) {
-      await teacherExists.update({ restrict: req.body });
+      await teacherExists.update({ $push: { restrict: req.body } });
+      return res.status(200).json({ message: 'atualizado com sucesso' });
+    }
+    return res.status(400).json({ message: 'ususario nao encontrado' });
+  }
+
+  async removeRestrict(req, res) {
+    const teacherExists = await Professor.findOne({
+      _id: req.params.id,
+    });
+    console.log(req.body);
+    if (teacherExists) {
+      await teacherExists.update({ $pull: { restrict: { id: req.body.id } } });
       return res.status(200).json({ message: 'atualizado com sucesso' });
     }
     return res.status(400).json({ message: 'ususario nao encontrado' });

@@ -56,6 +56,7 @@ routes.get('/professor', TeacherController.show);
 routes.get('/professor/:id', TeacherController.index);
 routes.put('/professor/:id', TeacherController.update);
 routes.put('/professorRestrict/:id', TeacherController.updateRestrict);
+routes.put('/professorremoverestrict/:id', TeacherController.removeRestrict);
 routes.delete('/professor/:id', TeacherController.delete);
 
 routes.post('/timetable', TimeTableController.create);
