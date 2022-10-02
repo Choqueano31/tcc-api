@@ -8,6 +8,7 @@ import Salas from '../schemas/Salas';
 class DisciplinaController {
   async show(req, res) {
     const response = await Disciplinas.find();
+    console.log(response);
     for (let i = 0; i < response.length; i++) {
       const findBloc = await Bloco.findOne({ _id: response[i].bloco_id });
       const findSala = await Salas.findOne({ _id: response[i].sala_id });
@@ -24,7 +25,7 @@ class DisciplinaController {
         response[i].professor = findProf;
       }
     }
-    if (response.data.length > 0) {
+    if (response.length > 0) {
       return res.json(response);
     }
     throw new Error('nao há disciplinas cadastradas');

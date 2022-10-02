@@ -28,6 +28,10 @@ const DisciplinasSchema = new mongoose.Schema(
       type: String,
       allowNull: false,
     },
+    labels: {
+      type: String,
+      allowNull: false,
+    },
     bloco: {
       type: Object,
     },
