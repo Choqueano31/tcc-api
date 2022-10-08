@@ -15,7 +15,7 @@ const models = [Classrooms, Disciplinas, teachers, Teams];
 
 class Database {
   constructor() {
-    this.init();
+    // this.init();
     this.mongo();
   }
 

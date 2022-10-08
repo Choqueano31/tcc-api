@@ -5,6 +5,7 @@ import ClassroomController from './app/controllers/ClassroomController';
 import DisciplinaController from './app/controllers/DisciplinaController';
 import TeacherController from './app/controllers/TeacherController';
 import TimeTableController from './app/controllers/TimeTableController';
+import UserMongoController from './app/controllers/UserMongoController';
 // import configMulter from './config/multer';
 
 // controller
@@ -63,6 +64,10 @@ routes.post('/timetable', TimeTableController.create);
 routes.get('/timetable', TimeTableController.show);
 routes.get('/timetable/:id', TimeTableController.index);
 routes.put('/timetable/:id/:id2', TimeTableController.update);
+
+routes.post('/createusernmongo', UserMongoController.store);
+routes.post('/sessionmongo', UserMongoController.session);
+
 // routes.post('/user', UserController.store);
 // routes.post('/sessions', SessionController.store);
 
