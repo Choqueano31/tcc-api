@@ -1,5 +1,7 @@
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import User from '../schemas/User';
+import auth from '../../config/auth';
 
 const saltRounds = 10;
 class UserMongoController {
@@ -25,9 +27,12 @@ class UserMongoController {
       if (user) {
         const cmp = await bcrypt.compare(req.body.senha, user.senha);
         if (cmp) {
-          const { usuario, senha } = user;
+          const { usuario } = user;
+          const token = jwt.sign({ usuario }, auth.secret, {
+            expiresIn: auth.expiresIn,
+          });
           //   ..... further code to maintain authentication like jwt or sessions
-          res.status(200).json({ usuario, senha });
+          res.status(200).json({ usuario, token });
         } else {
           res.send('Wrong username or password.');
         }
