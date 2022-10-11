@@ -1,4 +1,4 @@
-module.exports = {
+const database = {
   dialect: 'mysql',
   host: 'localhost',
   username: 'root',
@@ -11,3 +11,4 @@ module.exports = {
     underscoredAll: true,
   },
 };
+export default database;
