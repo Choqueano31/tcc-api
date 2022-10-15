@@ -8,26 +8,10 @@ import TimeTableController from './app/controllers/TimeTableController';
 import UserMongoController from './app/controllers/UserMongoController';
 // import configMulter from './config/multer';
 
-// controller
-// import UserController from './app/controllers/UserController';
-// import SessionController from './app/controllers/SessionController';
-// import FileController from './app/controllers/FileController';
-// import ProviderController from './app/controllers/ProviderController';
-// import AppointmentController from './app/controllers/AppointmentController';
-// import NotificationController from './app/controllers/NotificationController';
-// import AvailableController from './app/controllers/AvailableController';
 
 // // middleware
 // // import authMiddleware from './app/middlewares/auth';
-// import ScheduleController from './app/controllers/ScheduleController';
-// // import AssociatesController from './app/controllers/AssociatesController';
-// import CityController from './app/controllers/CityController';
-// import UnityController from './app/controllers/UnityController';
-// import AssociadosteamController from './app/controllers/AssociadosteamController';
-// import CidadesController from './app/controllers/CidadesController';
-// import HelpController from './app/controllers/HelpController';
-// import HotelsController from './app/controllers/HotelsController';
-// import BedroomsController from './app/controllers/BedroomsController';
+
 
 const routes = new Router();
 // const upload = multer(configMulter);
@@ -68,55 +52,7 @@ routes.put('/timetable/:id/:id2', TimeTableController.update);
 routes.post('/createusernmongo', UserMongoController.store);
 routes.post('/sessionmongo', UserMongoController.session);
 
-// routes.post('/user', UserController.store);
-// routes.post('/sessions', SessionController.store);
-
-// routes.get('/providers', ProviderController.index);
-// routes.get('/providers/:providerId/available', AvailableController.index);
 
 // // routes.use(authMiddleware); // irá valer apenas p/ rotas declaradas depois dessa linha
-
-// routes.put('/user', UserController.update);
-// routes.get('/user', UserController.show);
-
-// routes.get('/appointments', AppointmentController.index);
-// routes.post('/appointments', AppointmentController.store);
-// routes.delete('/appointments/:id', AppointmentController.delete);
-
-// routes.get('/schedule', ScheduleController.index);
-
-// routes.get('/notifications', NotificationController.index);
-// routes.put('/notifications/:id', NotificationController.update);
-
-// routes.post('/files', upload.single('file'), FileController.store);
-
-// // routes.get('/associates', AssociatesController.show);
-// // routes.post('/associatesCreate', AssociatesController.store);
-// // routes.post('/associatesFind', AssociatesController.index);
-
-// routes.post('/associadosteamcreate', AssociadosteamController.store);
-// routes.get('/associadosteam', AssociadosteamController.show);
-// routes.get('/associadosteamindividual/:cpf', AssociadosteamController.index);
-
-// routes.get('/cidadesmigration', CidadesController.Show);
-// routes.get('/cities', CityController.show);
-// routes.post('/citiesCreate', CityController.store);
-
-// routes.get('/unity', UnityController.show);
-// routes.post('/unityCreate', UnityController.store);
-
-// routes.post('/helpUser', HelpController.store);
-// routes.get('/helpUserList', HelpController.show);
-// routes.get('/helpUserIndividual/:id', HelpController.index);
-
-// routes.post('/Hotelcreate', HotelsController.store);
-// routes.get('/HotelList', HotelsController.show);
-// routes.put('/Hotelupdate/:id', HotelsController.update);
-// routes.delete('/Hoteldelete/:id', HotelsController.delete);
-
-// routes.post('/bedroomscreate', BedroomsController.store);
-// routes.get('/bedroomslist', BedroomsController.show);
-// routes.put('/bedroomupdate/:id', BedroomsController.update);
-// routes.delete('/bedroomdelete/:id', BedroomsController.delete);
 
 export default routes;

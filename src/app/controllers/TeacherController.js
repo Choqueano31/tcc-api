@@ -66,7 +66,6 @@ class TeacherController {
     const teacherExists = await Professor.findOne({
       _id: req.params.id,
     });
-    console.log(teacherExists);
     if (teacherExists) {
       await teacherExists.update({ $set: req.body });
       return res.status(200).json({ message: 'atualizado com sucesso' });
@@ -78,7 +77,6 @@ class TeacherController {
     const teacherExists = await Professor.findOne({
       _id: req.params.id,
     });
-    console.log(req.body);
     if (teacherExists) {
       await teacherExists.update({ $push: { restrict: req.body } });
       return res.status(200).json({ message: 'atualizado com sucesso' });
@@ -90,7 +88,6 @@ class TeacherController {
     const teacherExists = await Professor.findOne({
       _id: req.params.id,
     });
-    console.log(req.body);
     if (teacherExists) {
       await teacherExists.update({ $pull: { restrict: { id: req.body.id } } });
       return res.status(200).json({ message: 'atualizado com sucesso' });
