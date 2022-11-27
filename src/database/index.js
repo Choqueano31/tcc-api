@@ -13,7 +13,8 @@ class Database {
     // this.init();
     this.mongo();
   }
-//this connection is off
+
+  // this connection is off
   init() {
     this.connection = new Sequelize(databaseConfig);
     // console.log(models[5].associate(this.connection.models));
@@ -25,8 +26,8 @@ class Database {
 
   mongo() {
     this.mongoConnection = mongoose.connect(
-      'mongodb://localhost:27017/TCC?appName=TCC',
-     //  'mongodb+srv://almeida:24111994@cluster0.ps000.mongodb.net/TCC?retryWrites=true&w=majority',
+      // 'mongodb://localhost:27017/TCC?appName=TCC',
+      'mongodb+srv://almeida:24111994@cluster0.ps000.mongodb.net/TCC?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
         useFindAndModify: true,
