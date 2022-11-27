@@ -20,6 +20,43 @@ class UserMongoController {
     }
   }
 
+  async show(req, res) {
+    try {
+      const response = await User.find({}, 'usuario');
+      return res.json(response);
+    } catch (error) {
+      return res.json({ message: 'Ocorreu algum erro' });
+    }
+  }
+
+  async update(req, res) {
+    const userExists = await User.findOne({
+      _id: req.params.id,
+    });
+    if (userExists) {
+      const dados = req.body;
+      if (req.body.senha === '') {
+        await userExists.update({ $set: { usuario: dados.usuario } });
+        return res.status(200).json({ message: 'atualizado com sucesso' });
+      }
+
+      dados.senha = await bcrypt.hash(req.body.senha, saltRounds);
+      await userExists.update({ $set: dados });
+      return res.status(200).json({ message: 'atualizado com sucesso' });
+    }
+    return res.status(400).json({ message: 'ususario nao encontrado' });
+  }
+
+  async delete(req, res) {
+    const userExist = await User.deleteOne({ _id: req.params.id });
+    if (userExist) {
+      return res.json({ message: 'usuário exlcuido com sucesso' });
+    }
+    return res
+      .status(400)
+      .json({ message: 'nao foi possivel excluir, tente novamente' });
+  }
+
   async session(req, res) {
     try {
       const user = await User.findOne({ usuario: req.body.usuario });
@@ -34,10 +71,10 @@ class UserMongoController {
           //   ..... further code to maintain authentication like jwt or sessions
           res.status(200).json({ usuario, token });
         } else {
-          res.send('Wrong username or password.');
+          res.status(400).json('usuario ou senha incorretos');
         }
       } else {
-        res.send('Wrong username or password.');
+        res.status(400).json('usuario ou senha incorretos');
       }
     } catch (error) {
       // console.log(error);

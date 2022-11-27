@@ -8,10 +8,8 @@ import TimeTableController from './app/controllers/TimeTableController';
 import UserMongoController from './app/controllers/UserMongoController';
 // import configMulter from './config/multer';
 
-
 // // middleware
 // // import authMiddleware from './app/middlewares/auth';
-
 
 const routes = new Router();
 // const upload = multer(configMulter);
@@ -29,6 +27,8 @@ routes.get('/salas', ClassroomController.show);
 routes.get('/salas/:id', ClassroomController.index);
 routes.put('/salas/:id', ClassroomController.update);
 routes.delete('/salas/:id', ClassroomController.delete);
+routes.put('/classrestrict/:id', ClassroomController.updateRestrict);
+routes.put('/classremoverestrict/:id', ClassroomController.removeRestrict);
 
 routes.post('/disciplinas', DisciplinaController.create);
 routes.get('/disciplinas', DisciplinaController.show);
@@ -51,7 +51,9 @@ routes.put('/timetable/:id/:id2', TimeTableController.update);
 
 routes.post('/createusernmongo', UserMongoController.store);
 routes.post('/sessionmongo', UserMongoController.session);
-
+routes.get('/users', UserMongoController.show);
+routes.put('/user/:id', UserMongoController.update);
+routes.delete('/user/:id', UserMongoController.delete);
 
 // // routes.use(authMiddleware); // irá valer apenas p/ rotas declaradas depois dessa linha
 

@@ -52,6 +52,28 @@ class ClassroomController {
     return res.status(400).json({ message: 'erro ao tentar atualizar' });
   }
 
+  async updateRestrict(req, res) {
+    const classExists = await Salas.findOne({
+      _id: req.params.id,
+    });
+    if (classExists) {
+      await classExists.update({ $push: { restrict: req.body } });
+      return res.status(200).json({ message: 'atualizado com sucesso' });
+    }
+    return res.status(400).json({ message: 'ususario nao encontrado' });
+  }
+
+  async removeRestrict(req, res) {
+    const classExists = await Salas.findOne({
+      _id: req.params.id,
+    });
+    if (classExists) {
+      await classExists.update({ $pull: { restrict: { id: req.body.id } } });
+      return res.status(200).json({ message: 'atualizado com sucesso' });
+    }
+    return res.status(400).json({ message: 'ususario nao encontrado' });
+  }
+
   async delete(req, res) {
     const classExist = await Salas.findOne({
       _id: req.params.id,

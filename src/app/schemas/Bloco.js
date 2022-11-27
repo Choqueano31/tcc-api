@@ -16,10 +16,6 @@ const BlocoSchema = new mongoose.Schema(
       type: String,
       allowNull: false,
     },
-    disciplinas: {
-      type: Array,
-      allowNull: true,
-    },
   },
   {
     timestamps: true,
